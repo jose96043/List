@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="./assets/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/css/application.css" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<span class="brand"> Company Information </span>
+			</div>
+		</div>
+	</div>
+	<div id="main-region" class="container">
+		<p>Here is static content in the web page. You'll notice that it
+			gets 21 replaced by our app as soon as we start it.</p>
+	</div>
+
+	<button>Test</button>
+
+	<script type="text/template" id="company-list">
+    <thead>
+    <tr>
+        <th>Company</th>
+        <th>Website</th>
+        <th>Phone #</th>
+        <th>Email</th>
+        <th>Website</th>
+		<th>HashTag</th>
+		<th>Structure</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+	</script>
+
+
+
+	<script src="./assets/js/vendor/jquery.js"></script>
+	<script src="./assets/js/vendor/json2.js"></script>
+	<script src="./assets/js/vendor/underscore.js"></script>
+	<script src="./assets/js/vendor/backbone.js"></script>
+	<script src="./assets/js/vendor/backbone.marionette.js"></script>
+
+	<script src="./assets/js/app.js"></script>
+	<script src="./assets/js/entities/company.js"></script>
+	<script src="./assets/js/apps/companies/contacts_app.js"></script>
+	<script src="./assets/js/apps/companies/list/list_view.js"></script>
+	<script src="./assets/js/apps/companies/list/list_controller.js"></script>
+
+
+	<script>
+		$('button').click(function() {
+			$.ajax({
+				type : 'POST',
+				url : 'getCompanies'
+			}).done(function(data) {
+				console.log('data', data);
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		CompanyInfo.start();
+	</script>
+</body>
+</html>
