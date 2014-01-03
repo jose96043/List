@@ -2,8 +2,8 @@ CompanyInfo.module("Entities", function(Entities, CompanyInfo, Backbone, Marione
     Entities.Company = Backbone.Model.extend({});
 
     Entities.CompanyCollection = Backbone.Collection.extend({
-        model: Entities.Company,
-        comparator: "firstName"
+        model: Entities.Company
+//        comparator: "firstName"
     });
 
     var companies;
@@ -13,30 +13,9 @@ CompanyInfo.module("Entities", function(Entities, CompanyInfo, Backbone, Marione
 			type : 'POST',
 			url : 'getCompanies'
 		}).done(function(data) {
-			companies = new Entities.CompanyCollection(data);
-			console.log('data', data);
+			companies = new Entities.CompanyCollection(data.hits.hits);
+			CompanyInfo.trigger("company:initData");
 		});
-    	
-//    	companies = new Entities.CompanyCollection([
-//            {
-//                id:1,
-//                firstName: "Alice",
-//                lastName: "Arten",
-//                phoneNumber: "555-0184"
-//            },
-//            {
-//                id: 2,
-//                firstName: "Bob",
-//                lastName: "Brigham",
-//                phoneNumber: "555-0162"
-//            },
-//            {
-//                id: 3,
-//                firstName: "Charlie",
-//                lastName: "Campbell",
-//                phoneNumber: "555-0129"
-//            }
-//        ]);
     };
 
     var API = {

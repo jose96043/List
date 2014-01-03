@@ -13,6 +13,10 @@ CompanyInfo.getCurrentRoute = function(){
 	return Backbone.history.fragment;
 };
 
+CompanyInfo.on("initialize:before", function(){
+	CompanyInfo.request("company:entities");
+});
+
 CompanyInfo.on("initialize:after", function(){
 	var self = this;
 	if(Backbone.history){

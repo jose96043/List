@@ -22,7 +22,6 @@ CompanyInfo.module("CompaniesApp", function(CompaniesApp,CompanyInfo,Backbone,Ma
 	});
 
 	CompanyInfo.on("companies:show", function(id){
-		console.log("HI");
 		CompanyInfo.navigate("companies/"+id);
 		API.showCompany(id);
 	});
